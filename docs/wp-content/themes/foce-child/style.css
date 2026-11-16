@@ -1,0 +1,671 @@
+@charset "UTF-8";
+/*
+ Theme Name:  Fleurs d'oranger et chats errants - Oscars Short
+ Theme URI: https://www.koukaki.local
+ Author: Studio Koukaki
+ Author URI: https://www.koukaki.local
+ Template: foce
+ Description: Thème enfant à l'occasion de la nomination aux Oscars Shorts
+ Version: 0.1
+ */
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes fade_in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* quicksand-700 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Quicksand";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./assets/fonts/quicksand-v37-latin-700.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* roboto-mono-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./assets/fonts/roboto-mono-v31-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+.banner {
+  position: relative;
+  background-image: none;
+}
+.banner video {
+  position: absolute;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  animation: slideDown 1s ease-in-out forwards;
+}
+.banner img.logo {
+  animation: float 2s ease-in-out infinite;
+}
+.banner .logo-container {
+  position: sticky;
+  top: 195px;
+  margin-bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  animation: slideUp 1s ease-in-out forwards;
+}
+
+.bg-image-fallback {
+  display: none;
+  position: absolute;
+  object-fit: cover;
+  width: 100% !important;
+  height: 100%;
+  margin-top: 0;
+}
+
+h1.site-title a {
+  font-size: clamp(15px, 0.8214rem + 0.5804vw, 21.5px);
+}
+
+.main-navigation {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 80px;
+}
+.main-navigation .menu-fullscreen {
+  margin: 0;
+  padding: 0;
+  display: none;
+}
+.main-navigation .site-title {
+  display: block;
+}
+.main-navigation .menu-toggle {
+  position: absolute;
+  right: 7%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 44px;
+  display: block;
+  padding: 0;
+  --gap: 8px;
+}
+.main-navigation .menu-toggle .line {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  background-color: #000000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.main-navigation .menu-toggle .line:nth-child(1) {
+  transform: translateY(calc(var(--gap) * -1));
+}
+.main-navigation .menu-toggle .line:nth-child(3) {
+  transform: translateY(var(--gap));
+}
+
+#site-navigation.toggled .menu-fullscreen {
+  display: flex;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 1440px;
+  width: 100%;
+  height: calc(100vh - 80px);
+  height: calc(100dvh - 80px);
+  background-color: #FFF5E9;
+  animation: fade_in 0.5s ease-in-out forwards;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  overflow: hidden;
+}
+
+#site-navigation.toggled .menu-toggle .line:nth-child(1) {
+  transform: rotate(45deg);
+}
+#site-navigation.toggled .menu-toggle .line:nth-child(2) {
+  opacity: 0;
+}
+#site-navigation.toggled .menu-toggle .line:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.menu-toggle .line {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-decor-img {
+  position: absolute;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-toggled-logo {
+  padding-top: 45px;
+  padding-bottom: 50px;
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0px 0px 10px rgba(255, 92, 0, 0.9));
+}
+
+.menu-toggled-red-cat {
+  bottom: 9%;
+  left: 6%;
+}
+
+.menu-toggled-purple-cat {
+  top: 18%;
+  left: 20%;
+}
+
+.menu-toggled-black-cat {
+  top: 49%;
+  right: 15%;
+}
+
+.menu-toggled-hibiscus {
+  top: 65%;
+  left: 78%;
+}
+
+.menu-toggled-flower {
+  top: 51%;
+  left: 14%;
+  width: 4.9%;
+}
+
+.menu-toggled-sunflower {
+  top: 9%;
+  right: 14%;
+  width: 15%;
+}
+
+.menu-toggled-orchid {
+  top: 8%;
+  left: -4%;
+}
+
+.menu-toggled-random-flower {
+  top: 39%;
+  right: -2%;
+  width: 5.2%;
+}
+
+.menu-toggled-hibiscus,
+.menu-toggled-random-flower,
+.menu-toggled-orchid,
+.menu-toggled-sunflower,
+.menu-toggled-flower {
+  animation: rotation 15s linear infinite;
+}
+
+.menu-toggled-red-cat,
+.menu-toggled-purple-cat,
+.menu-toggled-black-cat {
+  animation: float 2s ease-in-out infinite;
+}
+
+.menu-fullscreen li {
+  font-size: clamp(2rem, 1.4286rem + 2.8571vw, 4rem);
+  padding: 3.5% 0;
+  text-align: center;
+}
+
+.menu-fullscreen li a:hover {
+  color: #000000;
+  filter: drop-shadow(0px 0px 4px rgb(255, 92, 0));
+}
+
+.main-navigation.toggled ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/******************* MEDIAS QUERIES **********************/
+@media (max-width: 1100px) {
+  .menu-toggled-hibiscus {
+    top: 65%;
+    left: 69%;
+  }
+  .banner {
+    min-height: 600px;
+  }
+}
+@media (max-width: 880px) {
+  .menu-toggled-black-cat {
+    top: 43%;
+    right: 10%;
+  }
+}
+@media (max-width: 768px) {
+  .banner {
+    min-height: 450px;
+  }
+  .banner video {
+    display: none;
+  }
+  .bg-image-fallback {
+    display: block;
+    animation: slideDown 1s ease-in-out forwards;
+  }
+  .banner .logo-container {
+    margin-bottom: 5%;
+  }
+  .main-navigation {
+    justify-content: space-between;
+    padding-left: 7%;
+  }
+  .main-navigation {
+    justify-content: space-between;
+    padding-left: 7%;
+    padding-right: calc(7% + 40px + 16px);
+  }
+  .main-navigation .site-title {
+    margin: 0;
+    line-height: 1.2;
+  }
+}
+@media (max-width: 680px) {
+  .menu-toggled-random-flower,
+  .menu-toggled-orchid,
+  .menu-toggled-sunflower,
+  .menu-toggled-flower,
+  .menu-toggled-red-cat,
+  .menu-toggled-purple-cat,
+  .menu-toggled-black-cat {
+    display: none;
+  }
+  .menu-toggled-hibiscus {
+    top: 67%;
+    left: 0%;
+  }
+  .menu-fullscreen .menu-footer {
+    position: absolute;
+    bottom: 1%;
+  }
+}
+@media (max-width: 420px) {
+  .menu-toggled-hibiscus {
+    top: 80%;
+    left: 0%;
+  }
+  .main-navigation .menu-toggle {
+    width: 30px;
+    --gap: 6px;
+  }
+  .banner {
+    min-height: 300px;
+  }
+}
+.story #characters h3,
+#place h3 {
+  font-size: clamp(20px, 0.8571rem + 1.9643vw, 42px);
+}
+
+.story h2,
+#studio h2 {
+  font-size: clamp(32px, 1.4643rem + 2.6786vw, 62px);
+}
+
+.story__article::after,
+.story h2::after,
+#studio h2::before,
+#studio h2::after,
+.site-footer::after,
+.site-footer::before,
+#nomination .nomination-flowers::before,
+#nomination .nomination-flowers::after,
+.site-footer ul::after {
+  animation: rotation 15s linear infinite;
+}
+
+.story h2::after {
+  left: 3.04rem;
+  top: 27rem;
+  font-size: 0;
+}
+
+#studio h2::before {
+  left: -4rem;
+  top: 0;
+  font-size: 0;
+}
+
+#studio h2::after {
+  right: 7rem;
+  top: 4.2rem;
+  font-size: 0;
+}
+
+.site-footer::after {
+  right: -4rem;
+  bottom: 7.8rem;
+  font-size: 0;
+  display: none;
+}
+
+.site-footer::before {
+  left: 4rem;
+  top: 0rem;
+  font-size: 0;
+  display: none;
+}
+
+.story,
+#studio,
+#nomination,
+.site-footer {
+  opacity: 0;
+  animation: fade_in 1s ease-in-out forwards;
+}
+
+.story {
+  animation-delay: 0.3s;
+}
+
+#studio {
+  animation-delay: 0.6s;
+}
+
+#nomination {
+  animation-delay: 0.9s;
+}
+
+.site-footer {
+  animation-delay: 1.3s;
+}
+
+.story h2 span,
+#studio h2 span,
+#characters h3 span,
+#place h3 span,
+.nomination-title h2 span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: transform 0.3s, opacity 0s;
+}
+
+.story h2.is-visible span,
+#studio h2.is-visible span,
+#characters h3.is-visible span,
+#place h3.is-visible span,
+.nomination-title h2.is-visible span {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#nomination {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin: 5% 10% 0 14%;
+}
+#nomination img.oscars-img {
+  margin-top: 2.5rem;
+  margin-left: -4rem;
+  max-width: 32%;
+}
+
+.nomination-title {
+  position: relative;
+}
+.nomination-title h2 {
+  position: absolute;
+  top: 5%;
+  left: 0;
+  font-size: clamp(14px, 0.1429rem + 2.4107vw, 37px);
+  text-align: left;
+  width: 96%;
+  background: none;
+}
+.nomination-title .nomination-bg {
+  width: 93%;
+}
+
+#nomination {
+  position: relative;
+}
+#nomination .nomination-flowers::before {
+  content: url("./assets/images/orchid.png");
+  position: absolute;
+  bottom: 16rem;
+  right: -14.3rem;
+}
+#nomination .nomination-flowers::after {
+  content: url("./assets/images/sunflower.png");
+  position: absolute;
+  bottom: 14rem;
+  left: -5rem;
+}
+
+div.nomination-flowers-container {
+  overflow: hidden;
+}
+
+.story #characters {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.story #characters h3 {
+  margin-left: 2%;
+  margin-top: 2%;
+}
+
+.story #place {
+  background-image: url("./assets/images/image-place.webp");
+}
+
+#place {
+  position: relative;
+}
+#place .cloud {
+  position: absolute;
+  z-index: 1;
+  filter: blur(15px);
+}
+#place .big-cloud {
+  top: 12%;
+  left: 72%;
+  width: 285px;
+}
+#place .little-cloud {
+  top: 36%;
+  left: 56%;
+  width: 150px;
+}
+
+.story__article {
+  font-size: clamp(14px, 13px + 0.15vw, 15px);
+}
+
+/*************************** MEDIAS QUERIES ***************************/
+@media (max-width: 1240px) {
+  #nomination .nomination-flowers::after {
+    left: -11rem;
+  }
+}
+@media (max-width: 1040px) {
+  .story__article::before,
+  .story__article::after {
+    display: none;
+  }
+}
+@media (max-width: 920px) {
+  .story #characters {
+    margin: 0 !important;
+  }
+  .story #place div {
+    margin: 10% 0 0 0;
+  }
+  #nomination {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 5% 0 0 0;
+  }
+  #nomination .nomination-title {
+    display: flex;
+    justify-content: center;
+  }
+  #nomination .nomination-title h2 {
+    top: 12%;
+    left: 19%;
+    width: 63%;
+  }
+  #nomination .nomination-title .nomination-bg {
+    width: 70%;
+  }
+  #nomination img.oscars-img {
+    margin-top: 2.5rem;
+    margin-left: 0;
+    max-width: 50%;
+  }
+}
+@media (max-width: 740px) {
+  .big-cloud,
+  .little-cloud {
+    display: none;
+  }
+}
+@media (max-width: 700px) {
+  #nomination .nomination-flowers {
+    display: none;
+  }
+}
+@media (max-width: 390px) {
+  #studio h2 {
+    padding: 20px !important;
+  }
+}
+.story #characters {
+  margin: 6em 0;
+  display: flex;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#characters .swiper {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+#characters .swiper-slide {
+  width: min(70vw, 900px);
+  text-align: center;
+  background: none;
+}
+#characters .swiper-slide img {
+  width: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+#characters .swiper-slide p {
+  margin-top: 1em;
+}
+
+#characters .swiper-slide img {
+  aspect-ratio: 1;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 4px;
+}
+
+body:has(#site-navigation.toggled) {
+  overflow: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+  .story,
+  #studio,
+  #nomination,
+  .site-footer,
+  .banner .logo-container,
+  .story h2 span,
+  #studio h2 span,
+  #characters h3 span,
+  #place h3 span,
+  .nomination-title h2 span {
+    opacity: 1;
+    transform: none;
+  }
+  .banner video {
+    display: none;
+  }
+  .bg-image-fallback {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
