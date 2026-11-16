@@ -2,7 +2,7 @@
 
 Site vitrine animé pour le court-métrage d'un studio d'animation fictif.
 
-**Démo :** _lien à venir_
+**Démo :** [stephanietrnc.github.io/koukaki](https://stephanietrnc.github.io/koukaki/)
 
 ## Contexte
 
