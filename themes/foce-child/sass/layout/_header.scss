@@ -1,0 +1,314 @@
+// Bannière du header + effet parallaxe/flottement du logo
+.banner {
+    position: relative;
+    background-image: none;
+
+    video {
+        position: absolute;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        animation: slideDown 1s ease-in-out forwards;
+    }
+
+    img.logo {
+        animation: float 2s ease-in-out infinite;
+    }
+    
+    .logo-container {
+    position: sticky;
+    top: 195px;
+    margin-bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    animation: slideUp 1s ease-in-out forwards; 
+}
+}
+
+.bg-image-fallback {
+    display: none;
+    position: absolute;
+    object-fit: cover;
+    width: 100% !important; 
+    height: 100%;
+    margin-top: 0;
+}
+
+// menu de navigation
+
+h1.site-title a {
+    font-size: clamp(15px, 0.8214rem + 0.5804vw, 21.5px);
+}
+
+.main-navigation {
+    position: relative; // référence pour le positionnement absolu du burger
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+
+    .menu-fullscreen {
+        margin: 0;
+        padding: 0;
+        display: none;
+        }
+
+        .site-title {
+            display: block;
+        }
+
+    .menu-toggle {
+        position: absolute; // hors du flux : ne décale plus le titre centré
+        right: 7%;
+        top: 50%;
+        transform: translateY(-50%);
+        margin: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        width: 40px;
+        height: 44px; // zone cliquable plus grande que le burger pour l'ergonomie
+        display: block; // pour passer au-dessus du display: none dans le thème parent à 700px
+        padding: 0;
+        --gap: 8px; // espace entre les lignes du burger
+
+        .line {
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            height: 1px;
+            margin: 0;
+            background-color: #000000;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+
+            &:nth-child(1) { transform: translateY(calc(var(--gap) * -1)); }
+            &:nth-child(3) { transform: translateY(var(--gap)); }
+        }
+    }
+}
+
+#site-navigation.toggled {
+    .menu-fullscreen {
+        display: flex;
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%); // centre horizontalement
+        max-width: 1440px;
+        width: 100%;
+        height: calc(100vh - 80px);   // navigateurs anciens
+        height: calc(100dvh - 80px);  // hauteur réellement visible (barre d'adresse comprise)
+        background-color: #FFF5E9;
+        animation: fade_in 0.5s ease-in-out forwards;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+        overflow: hidden;
+    }
+}
+
+// transformation du burger en croix lors de l'ouverture du menu
+#site-navigation.toggled .menu-toggle .line {
+    &:nth-child(1) { transform: rotate(45deg); }
+    &:nth-child(2) { opacity: 0; }
+    &:nth-child(3) { transform: rotate(-45deg); }
+}
+
+.menu-toggle .line {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+// Styles pour les images décoratives du menu - et le logo
+.menu-decor-img {
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-toggled-logo {
+    padding-top: 45px;
+    padding-bottom: 50px;
+    width: 150px;
+    height: auto;
+    filter: drop-shadow(0px 0px 10px rgba(255, 92, 0, 0.9));
+}
+
+// Positionnement des images décoratives du menu
+.menu-toggled-red-cat {
+    bottom: 9%;
+    left: 6%;
+}
+
+.menu-toggled-purple-cat {
+    top: 18%;
+    left: 20%;
+}
+
+.menu-toggled-black-cat {
+    top: 49%;
+    right: 15%;
+}
+
+.menu-toggled-hibiscus {
+    top: 65%;
+    left: 78%;
+}
+
+.menu-toggled-flower {
+    top: 51%;
+    left: 14%;
+    width: 4.9%;
+}
+
+.menu-toggled-sunflower {
+    top: 9%;
+    right: 14%;
+    width: 15%;
+}
+
+.menu-toggled-orchid {
+    top: 8%;
+    left: -4%;
+}
+
+.menu-toggled-random-flower {
+    top: 39%;
+    right: -2%;
+    width: 5.2%;
+}
+
+.menu-toggled-hibiscus,
+.menu-toggled-random-flower,
+.menu-toggled-orchid,
+.menu-toggled-sunflower,
+.menu-toggled-flower {
+    animation: rotation 15s linear infinite;
+}
+
+.menu-toggled-red-cat,
+.menu-toggled-purple-cat,
+.menu-toggled-black-cat {
+    animation: float 2s ease-in-out infinite;
+}
+
+// Mise en page des liens du menu
+.menu-fullscreen li {
+    font-size: clamp(2rem, 1.4286rem + 2.8571vw, 4rem);
+    padding: 3.5% 0;
+    text-align: center;
+}
+
+.menu-fullscreen li a:hover {
+    color: #000000;
+    filter: drop-shadow(0px 0px 4px rgba(255, 92, 0, 1));
+
+}
+
+.main-navigation.toggled ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+
+/******************* MEDIAS QUERIES **********************/
+
+@media(max-width:  1100px) {
+    .menu-toggled-hibiscus {
+    top: 65%;
+    left: 69%;
+}
+
+    .banner {
+        min-height: 600px;
+    }
+
+} // fin de la media query (1100px)
+
+
+@media(max-width:  880px) {
+    .menu-toggled-black-cat {
+    top: 43%;
+    right: 10%;
+}
+} // fin de la media query (880px)
+
+
+@media(max-width:  768px) {
+    .banner {
+        min-height: 450px;
+    }
+    
+    .banner video {
+        display: none;
+    }
+
+    .bg-image-fallback {
+        display: block;
+        animation: slideDown 1s ease-in-out forwards;
+    }
+
+    .banner .logo-container {
+        margin-bottom: 5%;
+    }
+
+    .main-navigation {
+        justify-content: space-between;
+        padding-left: 7%;
+    }
+
+    .main-navigation {
+        justify-content: space-between;
+        padding-left: 7%;
+        padding-right: calc(7% + 40px + 16px); // la place du burger + un espace
+
+    .site-title {
+        margin: 0;
+        line-height: 1.2;
+    }
+  }
+} // fin de la media query (768px) 
+
+
+@media(max-width:  680px) {
+    .menu-toggled-random-flower,
+    .menu-toggled-orchid,
+    .menu-toggled-sunflower,
+    .menu-toggled-flower,
+    .menu-toggled-red-cat,
+    .menu-toggled-purple-cat,
+    .menu-toggled-black-cat {
+            display: none;
+        }
+
+    .menu-toggled-hibiscus {
+    top: 67%;
+    left: 0%;
+}
+
+    .menu-fullscreen .menu-footer {
+        position: absolute;
+        bottom: 1%;
+    }
+} // fin de la media query (680px)
+
+
+@media(max-width:  420px) {
+    .menu-toggled-hibiscus {
+    top: 80%;
+    left: 0%;
+    }
+
+    .main-navigation .menu-toggle {
+        width: 30px;
+        --gap: 6px;
+    }
+
+    .banner {
+        min-height: 300px;
+    }
+} // fin de la media query (480px)

@@ -1,0 +1,53 @@
+// ============================================================
+// Accessibilité — importé en DERNIER dans style.scss,
+// pour passer devant les règles des autres fichiers.
+// ============================================================
+
+// Focus clavier bien visible (le contour pointillé du thème parent se voit à peine).
+// :focus-visible = seulement à la navigation au clavier, pas au clic de souris.
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 4px;
+}
+
+// Menu plein écran ouvert : la page derrière ne défile plus.
+body:has(#site-navigation.toggled) {
+  overflow: hidden;
+}
+
+// Réglage « réduire les animations » du système (Windows, macOS, iOS, Android) :
+// on coupe tout ce qui bouge. Le JS fait de même pour la parallaxe, la vidéo et le carrousel.
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+
+  // Ces éléments partent de opacity: 0 et n'apparaissaient que grâce à l'animation :
+  // on les rend visibles directement.
+  .story,
+  #studio,
+  #nomination,
+  .site-footer,
+  .banner .logo-container,
+  .story h2 span,
+  #studio h2 span,
+  #characters h3 span,
+  #place h3 span,
+  .nomination-title h2 span {
+    opacity: 1;
+    transform: none;
+  }
+
+  // Pas de vidéo : l'image fixe la remplace, comme sur mobile.
+  .banner video {
+    display: none;
+  }
+  .bg-image-fallback {
+    display: block;
+  }
+}

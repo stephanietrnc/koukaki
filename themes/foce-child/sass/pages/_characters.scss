@@ -1,0 +1,35 @@
+.story #characters {
+    margin: 6em 0;
+    display: flex;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#characters {
+    .swiper {
+        display: block; 
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .swiper-slide {
+        width: min(70vw, 900px); // 70% de la largeur d'écran, jamais plus de 900px;
+        text-align: center;
+        background: none;
+
+        img {
+            width: 100%;
+            border-radius: 50%; // rond comme sur la maquette
+            object-fit: cover;
+        }
+
+        p {
+            margin-top: 1em;
+        }
+    }
+}
+
+#characters .swiper-slide img {
+  aspect-ratio: 1;      // toujours carrée, donc un rond parfait
+}

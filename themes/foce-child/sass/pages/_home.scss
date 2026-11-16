@@ -1,0 +1,290 @@
+
+.story #characters h3,
+#place h3 {
+    font-size: clamp(20px, 0.8571rem + 1.9643vw, 42px);
+}
+
+.story h2,
+#studio h2 {
+    font-size: clamp(32px, 1.4643rem + 2.6786vw, 62px);
+}
+
+
+// Rotation des fleurs de la page d'accueil 
+.story__article::after,
+.story h2::after, 
+#studio h2::before, 
+#studio h2::after,
+.site-footer::after, 
+.site-footer::before,
+#nomination .nomination-flowers::before,
+#nomination .nomination-flowers::after,
+.site-footer ul::after {
+    animation: rotation 15s linear infinite; 
+}
+
+// Positionnement des fleurs de la page d'accueil (qui se déplaçaient en tournant)
+.story h2::after {
+    left: 3.04rem;
+    top: 27rem;
+    font-size: 0;
+}
+
+#studio h2::before {
+    left: -4rem;
+    top: 0;
+    font-size: 0;
+}
+
+#studio h2::after {
+    right: 7rem;
+    top: 4.2rem;
+    font-size: 0;
+}
+
+.site-footer::after {
+    right: -4rem;
+    bottom: 7.8rem;
+    font-size: 0;
+    display: none;  // à supprimer pour réafficher
+}
+
+.site-footer::before {
+    left: 4rem;
+    top: 0rem;
+    font-size: 0;
+    display: none;  // à supprimer pour réafficher
+}
+
+
+// Animation Fade In pour les sections de la page d'accueil
+.story,
+#studio,
+#nomination,
+.site-footer {
+    opacity: 0;
+    animation: fade_in 1s ease-in-out forwards;
+}
+
+// Les sections apparaissent une par une 
+.story {
+    animation-delay: 0.3s;
+}
+
+#studio {
+    animation-delay: 0.6s;
+}
+
+#nomination {
+    animation-delay: 0.9s;
+}
+
+.site-footer {
+    animation-delay: 1.3s;
+}
+
+// Animation pour les titres des sections de la page d'accueil qui apparaîssent au scroll
+// Etat initial : mots cachés et décalés vers le bas 
+.story h2 span, 
+#studio h2 span,
+#characters h3 span,
+#place h3 span,
+.nomination-title h2 span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.3s, opacity 0s;
+}
+
+// Etat final : quand la classe is-visible est ajouté au titre, car détecté par l'observer dans le viewport
+.story h2.is-visible span,
+#studio h2.is-visible span,
+#characters h3.is-visible span,
+#place h3.is-visible span,
+.nomination-title h2.is-visible span {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+//Section Nomination
+#nomination {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 5% 10% 0 14%;
+
+         img.oscars-img {
+            margin-top: 2.5rem;
+            margin-left: -4rem;
+            max-width: 32%;
+        }
+}
+
+.nomination-title {
+    position: relative;
+
+        h2 {
+            position: absolute;
+            top: 5%;
+            left: 0;
+            font-size: clamp(14px, 0.1429rem + 2.4107vw, 37px);
+            text-align: left;
+            width: 96%;
+            background: none;
+        }
+
+        .nomination-bg {
+            width: 93%;
+        }
+
+    }
+
+
+// Fleurs dans la section nomination
+    #nomination {
+        position: relative;
+
+        .nomination-flowers {
+            &::before {
+                content: url('assets/images/orchid.png');
+                position: absolute;
+                bottom: 16rem;
+                right: -14.3rem;
+            }
+            &::after {
+                content: url('assets/images/sunflower.png');
+                position: absolute;
+                bottom: 14rem;
+                left: -5rem;
+            }
+         }
+}
+
+div.nomination-flowers-container {
+    overflow: hidden; // pour que les fleurs ne dépassent pas du conteneur sans bloquer le sticky du logo
+    ;
+}
+
+// Section personnages 
+.story #characters {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.story #characters h3 {
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+
+// Section lieux - animations nuages 
+.story #place {
+    background-image: url('assets/images/image-place.webp');
+}
+
+#place {
+    position: relative; // contexte pour les nuages en absolute
+
+    .cloud {
+        position: absolute;
+        z-index: 1; // par-dessus le fond
+        filter: blur(15px); //flou
+    }
+
+    .big-cloud {
+        top: 12%; 
+        left: 72%;
+        width: 285px; 
+    }
+
+    .little-cloud {
+        top: 36%;
+        left: 56%;
+        width: 150px;
+    }
+}
+
+// Polices responsives 
+.story__article {
+    font-size: clamp(14px, 13px + 0.15vw, 15px);
+}
+
+
+/*************************** MEDIAS QUERIES ***************************/
+
+@media(max-width: 1240px) {
+    #nomination .nomination-flowers {
+            &::after {
+                left: -11rem;
+            }
+         }
+}
+
+@media(max-width: 1040px) {
+    .story__article::before, 
+    .story__article::after {
+            display: none;
+} 
+}// fin de la media query (1040px)
+
+@media(max-width: 920px) {
+    .story #characters {
+        margin: 0 !important;
+    }
+
+    .story #place div {
+        margin: 10% 0 0 0;
+    }
+
+    #nomination {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 5% 0 0 0;
+
+        .nomination-title {
+        display: flex;
+        justify-content: center;
+        }
+
+        .nomination-title h2 {
+            top: 12%;
+            left: 19%;
+            width: 63%;
+        }
+
+        .nomination-title .nomination-bg {
+            width: 70%;
+        }
+    }
+
+    #nomination img.oscars-img {
+        margin-top: 2.5rem;
+        margin-left: 0;
+        max-width: 50%;
+        }
+} // fin de la media query (920px)
+
+
+@media(max-width: 740px) {
+    .big-cloud,
+    .little-cloud {
+        display: none; 
+}
+} // fin de la media query (740px)
+
+@media(max-width: 700px) {
+    #nomination .nomination-flowers {
+        display: none;
+    }
+} // fin de la media query (700px)
+
+@media(max-width: 390px) {
+    #studio h2 {
+        padding: 20px !important;
+    }
+} // fin de la media query (390px)

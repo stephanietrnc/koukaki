@@ -1,0 +1,19 @@
+# On ignore tout wp-content…
+/*
+
+# …sauf ce qui a été codé pour ce projet
+!/.gitignore
+!/README.md
+!/mu-plugins/
+!/themes/
+/themes/*
+!/themes/foce/
+!/themes/foce-child/
+
+# La démo statique pour GitHub Pages
+!/docs/
+
+# Fichiers inutiles dans le dépôt
+node_modules/
+.DS_Store
+*.map
