@@ -23,6 +23,11 @@ Le but : animer une page WordPress existante (thème `foce`) en suivant une maqu
 - Accessibilité : navigation au clavier, focus visible, respect de « réduire les animations »
 - Sécurité : textes échappés, enregistrement des personnages protégé (nonce, droits)
 - Dimensions des images pour éviter les sauts de mise en page
+- Responsive revu :
+  - carrousel : personnage central de taille stable sur mobile
+  - titre de la nomination qui ne déborde plus de son fond sur téléphone
+  - section « Le Lieu » : titre et texte alignés à toutes les largeurs, texte lisible sur mobile
+  - plus de défilement horizontal entre 740 et 1000 px
 
 ## Structure
 

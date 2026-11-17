@@ -514,6 +514,7 @@ div.nomination-flowers-container {
 
 .story #place {
   background-image: url("./assets/images/image-place.webp");
+  overflow: hidden;
 }
 
 #place {
@@ -533,6 +534,13 @@ div.nomination-flowers-container {
   top: 36%;
   left: 56%;
   width: 150px;
+}
+
+/* Section « Le Lieu » : le texte commence au même endroit que le titre.
+   Le titre a un retrait de 2em : deux fois sa taille de police, qui varie
+   avec l'écran. On reprend donc sa taille (clamp) multipliée par 2. */
+.story #place > div p {
+  padding-left: clamp(40px, 1.7142rem + 3.9286vw, 84px);
 }
 
 .story__article {
@@ -593,6 +601,50 @@ div.nomination-flowers-container {
     display: none;
   }
 }
+/* Sur téléphone : titre et texte dans un cadre clair et léger, sur toute
+   la largeur, pour rester lisibles quel que soit le décor derrière. */
+@media (max-width: 480px) {
+  .story #place > div {
+    align-self: center;
+    width: 88%;
+    height: auto;
+    margin: 5em auto 2em; /* plus de marge en haut : compense la vague crème du fond */
+    padding: 1em;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background: rgba(255, 245, 233, 0.8);
+  }
+  .story #place h3 {
+    padding: 0.6em 1em;
+  }
+  .story #place > div p {
+    padding-left: 20px; /* = retrait du titre (1em de 20px) */
+    line-height: 1.6;
+  }
+  /* Titre de la nomination sur téléphone : le texte est plus haut que l'image
+   et débordait dessous. L'image passe en fond étiré derrière le texte,
+   et c'est le texte qui donne la hauteur du bloc. */
+}
+@media (max-width: 480px) and (max-width: 480px) {
+  #nomination .nomination-title {
+    width: 88%;
+    padding: 1.4em 1.3em;
+    box-sizing: border-box;
+  }
+  #nomination .nomination-title .nomination-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #nomination .nomination-title h2 {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: auto;
+    margin: 0;
+  }
+}
 @media (max-width: 390px) {
   #studio h2 {
     padding: 20px !important;
@@ -625,6 +677,10 @@ div.nomination-flowers-container {
   margin-top: 1em;
 }
 
+#characters .swiper-slide img {
+  aspect-ratio: 1;
+}
+
 /* Le thème parent donne flex: 1 à toutes les div de #characters : les 5 slides
    se partagent la largeur. Mais sur mobile, ce partage change pendant l'animation
    et le personnage du centre grossit ou rétrécit. On fixe donc la même part,
@@ -632,10 +688,6 @@ div.nomination-flowers-container {
 .story #characters .swiper-slide {
   flex: none;
   width: 20%;
-}
-
-#characters .swiper-slide img {
-  aspect-ratio: 1;
 }
 
 a:focus-visible,
