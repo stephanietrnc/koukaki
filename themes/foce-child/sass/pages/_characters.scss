@@ -33,3 +33,12 @@
 #characters .swiper-slide img {
   aspect-ratio: 1;      // toujours carrée, donc un rond parfait
 }
+
+/* Le thème parent donne flex: 1 à toutes les div de #characters : les 5 slides
+   se partagent la largeur. Mais sur mobile, ce partage change pendant l'animation
+   et le personnage du centre grossit ou rétrécit. On fixe donc la même part,
+   un cinquième, à chaque slide : même rendu, taille stable. */
+.story #characters .swiper-slide {
+  flex: none;
+  width: 20%;
+}
